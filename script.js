@@ -221,13 +221,13 @@ let aspectRatio = null, youngModulus = null, poissonRatio = null;
         }
 
         function calculateResult() {
-            if (aspectRatio === null || HRD === null || poissonRatio === null ) {
+            if (aspectRatio === null || youngModulus === null || poissonRatio === null ) {
                 alert("Please set all values before calculating!");
                 return;
             }
 
             // Example calculation (Modify based on actual formula)
-            const result = 500*(HRD * aspectRatio) / (1 - poissonRatio**2);
+            const result = 500*(youngModulus * aspectRatio) / (1 - poissonRatio**2);
 
             document.getElementById("resultValue").innerText = result.toFixed(6);
         }
