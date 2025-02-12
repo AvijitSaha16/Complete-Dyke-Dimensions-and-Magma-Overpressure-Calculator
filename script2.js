@@ -196,10 +196,10 @@ document.getElementById("processBtn").addEventListener("click", () => {
     const finalRow = document.createElement("tr");
     finalRow.innerHTML = `
       <td>Recommended</td>
-      <td>${finalResult.params["B/A"]}</td>
       <td>${finalResult.params["Gd"]}</td>
-      <td>${finalResult.params["B"]}</td>
       <td>${finalResult.params["A"]}</td>
+      <td>${finalResult.params["B"]}</td>
+      <td>${finalResult.params["B/A"]}</td>
     `;
     tbody.appendChild(finalRow);
 }
