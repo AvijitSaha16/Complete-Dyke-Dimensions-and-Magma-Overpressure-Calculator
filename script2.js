@@ -174,10 +174,10 @@ document.getElementById("processBtn").addEventListener("click", () => {
     thead.innerHTML = `
       <tr>
         <th>Cycle</th>
-        <th>B/A</th>
         <th>G<sub>D</sub></th>
-        <th>B</th>
         <th>A</th>
+        <th>B</th>
+        <th>B/A</th>
       </tr>
     `;
 
@@ -185,10 +185,10 @@ document.getElementById("processBtn").addEventListener("click", () => {
     tbody.innerHTML = results.map(result => 
       `<tr>
         <td>${result.cycle}</td>
-        <td>${result.params["B/A"]}</td>
         <td>${result.params["Gd"]}</td>
-        <td>${result.params["B"]}</td>
         <td>${result.params["A"]}</td>
+        <td>${result.params["B"]}</td>
+        <td>${result.params["B/A"]}</td>
       </tr>`
     ).join("");
 
