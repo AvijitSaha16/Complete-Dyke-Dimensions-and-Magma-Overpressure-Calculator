@@ -67,11 +67,12 @@ document.getElementById("processButton").addEventListener("click", function() {
         x1_squared: pair[0] ** 2, x2_squared: pair[1] ** 2,
         y1_squared: comb2[i][0] ** 2, y2_squared: comb2[i][1] ** 2,
         A: (((comb2[i][1] ** 2)*(pair[0] ** 2) - (comb2[i][0] ** 2)*(pair[1] ** 2)) / ((comb2[i][1] ** 2)*(pair[0] ) - (comb2[i][0] ** 2)*(pair[1]))),
-        B: Math.sqrt((((((comb2[i][1] ** 2)*(pair[0] ** 2) - (comb2[i][0] ** 2)*(pair[1] ** 2)) / ((comb2[i][1] ** 2)*(pair[0] ) - (comb2[i][0] ** 2)*(pair[1]))))*(comb2[i][0]))**2/(((((comb2[i][1] ** 2)*(pair[0] ** 2) - (comb2[i][0] ** 2)*(pair[1] ** 2)) / ((comb2[i][1] ** 2)*(pair[0] ) - (comb2[i][0] ** 2)*(pair[1]))))*(pair[0])-pair[0]**2))
-    })).filter(row => !isNaN(row.B));
+        B2: (((((comb2[i][1] ** 2)*(pair[0] ** 2) - (comb2[i][0] ** 2)*(pair[1] ** 2)) / ((comb2[i][1] ** 2)*(pair[0] ) - (comb2[i][0] ** 2)*(pair[1]))))*(comb2[i][0]))**2/(((((comb2[i][1] ** 2)*(pair[0] ** 2) - (comb2[i][0] ** 2)*(pair[1] ** 2)) / ((comb2[i][1] ** 2)*(pair[0] ) - (comb2[i][0] ** 2)*(pair[1]))))*(pair[0])-pair[0]**2),
+        // B: Math.sqrt((((((comb2[i][1] ** 2)*(pair[0] ** 2) - (comb2[i][0] ** 2)*(pair[1] ** 2)) / ((comb2[i][1] ** 2)*(pair[0] ) - (comb2[i][0] ** 2)*(pair[1]))))*(comb2[i][0]))**2/(((((comb2[i][1] ** 2)*(pair[0] ** 2) - (comb2[i][0] ** 2)*(pair[1] ** 2)) / ((comb2[i][1] ** 2)*(pair[0] ) - (comb2[i][0] ** 2)*(pair[1]))))*(pair[0])-pair[0]**2))
+    })).filter(row => row.B2 > 0);
 
     const meanA = results.reduce((sum, row) => sum + row.A, 0) / results.length;
-    const meanB = results.reduce((sum, row) => sum + row.B, 0) / results.length;
+    const meanB = results.reduce((sum, row) => sum + Math.sqrt(row.B2), 0) / results.length;
     const meanB_A = meanB/meanA;
     const summaryResults = [{ A: meanA.toFixed(6), B: meanB.toFixed(6), "B/A": meanB_A.toFixed(6) }];
 
@@ -147,5 +148,3 @@ let aspectRatio = null, youngModulus = null, poissonRatio = null;
 
             document.getElementById("resultValue").innerText = result.toFixed(6);
         }
-
-        
